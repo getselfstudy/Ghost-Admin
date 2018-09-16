@@ -129,5 +129,8 @@
       "lib/asset-delivery",
       "lib/koenig-editor"
     ]
+  },
+  "dependencies": {
+    "ember-mobiledoc-dom-renderer": "^0.6.0"
   }
 }
