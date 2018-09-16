@@ -1,0 +1,30 @@
+.selfstudy-force-p p {
+    margin: 0 0 1.5em 0 !important;
+}
+
+.selfstudy-force-p h1 + p {
+    margin: 1.2rem 0 0;
+}
+
+.selfstudy-force-p h2 + p {
+    margin: 0.8rem 0 0;
+}
+
+.selfstudy-force-p h3 + p,
+.selfstudy-force-p h4 + p,
+.selfstudy-force-p h5 + p,
+.selfstudy-force-p h6 + p {
+    margin: .8rem 0 0;
+}
+
+.selfstudy-force-p p + p,
+.selfstudy-force-p blockquote + p,
+.selfstudy-force-p ul + p,
+.selfstudy-force-p ol + p
+ {
+    margin: 3.2rem 0 0;
+}
+
+.selfstudy-force-p div + p { /* Mobiledoc cards can be addressed by their wrapper div element */
+    margin: 2.8rem 0 0;
+}
