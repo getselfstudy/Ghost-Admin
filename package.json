@@ -127,7 +127,8 @@
   "ember-addon": {
     "paths": [
       "lib/asset-delivery",
-      "lib/koenig-editor"
+      "lib/koenig-editor",
+      "lib/selfstudy-mobiledoc"
     ]
   },
   "dependencies": {

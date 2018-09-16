@@ -1,0 +1,10 @@
+{
+  "name": "selfstudy-mobiledoc",
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-babel": "^6.11.0",
+    "ember-cli-htmlbars": "^2.0.3"
+  }
+}
