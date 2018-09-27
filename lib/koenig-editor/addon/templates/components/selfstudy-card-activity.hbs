@@ -1,0 +1,82 @@
+{{#koenig-card
+    icon="koenig/selfstudy-card-activity-indicator"
+    class=(concat (kg-style "container-card") " miw-100 relative")
+    isSelected=isSelected
+    isEditing=isEditing
+    toolbar=toolbar
+    hasEditMode=false
+    selectCard=(action selectCard)
+    deselectCard=(action deselectCard)
+    editCard=(action editCard)
+    editor=editor
+}}
+    {{#if (or isEditing isSelected)}}
+        <div class="miw-100 flex flex-row pl3 br2 f7 fw4 lh-title items-center content">
+            <form class="w-100" onsubmit={{action "onSubmit"}}>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select
+                        type="text"
+                        value={{payload.type}}
+                        name="text"
+                        autofocus="autofocus"
+                        class="miw-100 pa2 ba br2 b--lightgrey-d2 f7 form-text lh-title tracked-2 h10"
+                        onchange={{action "updateType"}}>
+                        <option value="question">Question</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Stem</label>
+                    <div class="miw-100 pl3 br2 f7 fw4 lh-title items-center content">
+                        {{koenig-editor
+                            mobiledoc=payload.stem
+                            noSectionCard=true
+                            placeholder="Please enter Stem..."
+                            autofocus=bodyAutofocus
+                            spellcheck=true
+                            onChange=(action "onBodyChange")
+                            didCreateEditor=(action "onEditorCreated")
+                            cursorDidExitAtTop=(action "focusTitle")
+                            wordCountDidChange=(action "onWordCountChange")
+                            headerOffset=0
+                            dropTargetSelector=".gh-koenig-editor-pane"
+                            scrollContainerSelector=".gh-koenig-editor"
+                            scrollOffsetTopSelector=".gh-editor-header-small"
+                            scrollOffsetBottomSelector=".gh-mobile-nav-bar"
+                        }}
+                    </div>
+                </div>
+                {{#each answers as |answer|}}
+                    <div>
+                        <label>Answer {{answer.index}}</label>
+                        <div class="miw-100 pl3 br2 f7 fw4 lh-title items-center content">
+                            {{koenig-editor
+                                mobiledoc=payload.stem
+                                noSectionCard=true
+                                placeholder="Please enter answer {{answer.index}}"
+                                autofocus=bodyAutofocus
+                                spellcheck=true
+                                onChange=(action "onAnswerChange" answer.index)
+                                didCreateEditor=(action "onEditorCreated")
+                                cursorDidExitAtTop=(action "focusTitle")
+                                wordCountDidChange=(action "onWordCountChange")
+                                headerOffset=0
+                                dropTargetSelector=".gh-koenig-editor-pane"
+                                scrollContainerSelector=".gh-koenig-editor"
+                                scrollOffsetTopSelector=".gh-editor-header-small"
+                                scrollOffsetBottomSelector=".gh-mobile-nav-bar"
+                            }}
+                        </div>
+                    </div>
+                {{/each}}
+            </form>
+        </div>
+    {{else}}
+        <div class="miw-100 bt br2 b--lightgrey-d1 flex items-center justify-center bg-whitegrey-l2 f6 lh-title h10">
+            {{payload.type}}
+        </div>
+        <div class="miw-100 flex-row selfstudy-force-p">
+            {{selfstudy-render-mobiledoc mobiledoc=payload.stem}}
+        </div>
+    {{/if}}
+{{/koenig-card}}
